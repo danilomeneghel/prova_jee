@@ -53,23 +53,15 @@ public class CustoTransporteController {
     }
     
     public String add(){
-        int distanciaTotal = this.c.getDistanciaRodPav() + this.c.getDistanciaRodNaoPav();
+        double custoTransporte = this.custoTransporte(this.c.getDistanciaRodPav(), this.c.getDistanciaRodNaoPav(), this.c.getVeiculo(), this.c.getCarga());
         
-        subCusto = this.custoDistancia(this.c.getDistanciaRodPav(), this.c.getDistanciaRodNaoPav());
-        
-        subCusto = this.custoVeiculo(this.c.getVeiculo(), subCusto);
-        
-        subCusto = this.custoCarga(this.c.getCarga(), distanciaTotal, subCusto);
-        
-        String total = String.format("%.2f", subCusto);
+        String total = String.format("%.2f", custoTransporte);
         this.c.custo = Double.parseDouble(total.replace(",","."));
         
         try {
-            if (distanciaTotal != 0) {
-                this.custoTransporteFacade.create(this.c);
-                this.c = new CustoTransporte();
-                this.clearBean();
-            }
+            this.custoTransporteFacade.create(this.c);
+            this.c = new CustoTransporte();
+            this.clearBean();
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -103,6 +95,18 @@ public class CustoTransporteController {
         if(carga > 5) {
             subCusto = (((carga - 5) * 0.02) * distanciaTotal) + subCusto;
         }
+        
+        return subCusto;
+    }
+
+    public double custoTransporte(int distRodPav, int distRodNaoPav, int veiculo, int carga) {
+        int distanciaTotal = distRodPav + distRodNaoPav;
+        
+        subCusto = this.custoDistancia(distRodPav, distRodNaoPav);
+        
+        subCusto = this.custoVeiculo(veiculo, subCusto);
+        
+        subCusto = this.custoCarga(carga, distanciaTotal, subCusto);
         
         return subCusto;
     }

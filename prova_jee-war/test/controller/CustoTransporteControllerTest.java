@@ -170,6 +170,22 @@ public class CustoTransporteControllerTest {
         //Test check empty list
         assertThat(62.70, is(not(empty())));
     }
+    
+    /**
+     * Test of custoCarga method, of class CustoTransporteController.
+     */
+    @Test
+    public void testCustoTransporte() {
+        System.out.println("Rodando Teste Custo do Transporte");
+                
+        //Test equals
+        assertEquals(62.70, c.custoTransporte(100, 0, 2, 8));
+        
+        assertThat(62.70, is(c.custoTransporte(100, 0, 2, 8)));
+        
+        //Test check empty list
+        assertThat(62.70, is(not(empty())));
+    }
 
     /**
      * Test of clearBean method, of class CustoTransporteController.
