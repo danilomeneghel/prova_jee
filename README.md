@@ -2,7 +2,7 @@
 
 Prova da Softplan realizada com Java EE.
 
-## Features
+## Características
 
 - CRUD
 - MVC
@@ -13,14 +13,14 @@ Prova da Softplan realizada com Java EE.
 - DataTables
 - Validator
 
-## Requirements
+## Requisitos
 
 - NetBeans 8.2
 - Java JDK 1.8
 - Glassfish = 4.1
 - MySql >=5
 
-## Tecnologies
+## Tecnologias
 
 - Java
 - CSS
@@ -28,7 +28,7 @@ Prova da Softplan realizada com Java EE.
 - BootsFaces
 - MySql
 
-## Installation
+## Instalação
 
 ```
 $ git clone https://github.com/danilomeneghel/prova_jee.git
@@ -61,7 +61,7 @@ Depois, vá para "Recursos/JDBC/JDBC Resources", crie um nome para "jndi" (Prova
 Ao concluir a configuração, basta abrir o NetBeans e executar o projeto no navegador. <br>
 http://localhost:8080/war/
 
-## License
+## Licença
 
 Office is licensed under <a href="LICENSE">The MIT License (MIT)</a>.
 
