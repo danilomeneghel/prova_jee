@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Veículos</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/layout.xhtml">
+            <ui:define name="content">
+                <b:container>
+                    <h1><h:outputText value="Veículos"/></h1>
+                    <button class="btn btn-success btn-lg" data-target="#modal" data-toggle="modal">Novo</button><br/><br/>
+                    <h:form>
+                        <h:outputText class="warning" value="Nenhum registrado cadastrado." rendered="#{empty veiculoController.findAll()}" />
+                        
+                        <h:dataTable value="#{veiculoController.findAll()}" rendered="#{not empty veiculoController.findAll()}" var="item" class="table">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                <h:outputText value="#{item.id}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Nome</f:facet>
+                                <h:outputText value="#{item.nome}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Custo</f:facet>
+                                <h:outputText value="#{item.custo}"></h:outputText>
+                            </h:column>
+                            <h:column class="text-center">
+                                <f:facet name="header">Excluir</f:facet>
+                                <b:commandButton value="Excluir" icon="trash" action="#{veiculoController.delete(item)}" onclick="return confirm('Deseja mesmo excluir esse item?')"></b:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </b:container>
+
+                <b:modal title="Novo Veículo" id="modal">
+                    <h:form>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <h:outputText value="Nome"/>
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText id="nome" value="#{veiculoController.v.nome}" title="Nome" required="true"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <h:outputText value="Custo"/>
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText id="custo" value="#{veiculoController.v.custo}" title="Custo" required="true"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column>
+                                <b:button value="Fechar" dismiss="modal" />&nbsp;
+                                <b:commandButton value="Salvar" look="success" action="#{veiculoController.add()}"/>
+                            </b:column>
+                        </b:row>
+                    </h:form>
+                </b:modal>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
