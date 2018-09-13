@@ -69,7 +69,7 @@ public class CustoTransporteController {
         return "/index.xhtml?faces-redirect=true";
     }
     
-    public double custoDistancia(int distanciaRodPav, int distanciaRodNaoPav) {
+    public double custoDistancia(Integer distanciaRodPav, Integer distanciaRodNaoPav) {
         if(distanciaRodPav > 0) {
             subCusto = (distanciaRodPav * 0.54);
         }
@@ -80,18 +80,20 @@ public class CustoTransporteController {
         return subCusto;
     }
     
-    public double custoVeiculo(int veiculo, double subCusto) {
-        List<Veiculo> lista = this.veiculoFacade.findAll();
-        for (Veiculo v : lista) {
-            if (v.getId() == veiculo) {
-                subCusto = subCusto * v.getCusto().doubleValue();
+    public double custoVeiculo(Integer veiculo, Double subCusto) {
+        if (veiculo != null) {
+            List<Veiculo> lista = this.veiculoFacade.findAll();
+            for (Veiculo vv : lista) {
+                if (Objects.equals(vv.getId(), veiculo)) {
+                    subCusto = subCusto * vv.getCusto().doubleValue();
+                }
             }
         }
-
+        
         return subCusto;
     }
 
-    public double custoCarga(int carga, int distanciaTotal, double subCusto) {
+    public double custoCarga(Integer carga, Integer distanciaTotal, Double subCusto) {
         if(carga > 5) {
             subCusto = (((carga - 5) * 0.02) * distanciaTotal) + subCusto;
         }
@@ -99,14 +101,14 @@ public class CustoTransporteController {
         return subCusto;
     }
 
-    public double custoTransporte(int distRodPav, int distRodNaoPav, int veiculo, int carga) {
+    public double custoTransporte(Integer distRodPav, Integer distRodNaoPav, Integer veiculo, Integer carga) {
         int distanciaTotal = distRodPav + distRodNaoPav;
         
-        subCusto = this.custoDistancia(distRodPav, distRodNaoPav);
-        
-        subCusto = this.custoVeiculo(veiculo, subCusto);
-        
-        subCusto = this.custoCarga(carga, distanciaTotal, subCusto);
+        if (distanciaTotal > 0) {
+            subCusto = this.custoDistancia(distRodPav, distRodNaoPav);        
+            subCusto = this.custoVeiculo(veiculo, subCusto);        
+            subCusto = this.custoCarga(carga, distanciaTotal, subCusto);
+        }
         
         return subCusto;
     }

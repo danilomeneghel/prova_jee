@@ -23,6 +23,7 @@ public class VeiculoController {
     @EJB
     private VeiculoFacade veiculoFacade;
     private Veiculo v = new Veiculo();
+    private Integer id = 0;
     
     public Veiculo getV() {
         return v;
@@ -45,10 +46,15 @@ public class VeiculoController {
         return veiculos;
     }
     
-    public String getVeiculo(int id) {
-        Veiculo veiculo = this.veiculoFacade.find(id);
+    public String getVeiculo(Integer id) {
+        String nomeVeiculo = "";
         
-        return veiculo.getNome();
+        if (id != null) {
+            Veiculo veiculo = this.veiculoFacade.find(id);
+            nomeVeiculo = veiculo.getNome();
+        }
+        
+        return nomeVeiculo;
     }
     
     public List<Veiculo> findAll(){

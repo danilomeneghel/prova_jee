@@ -9,7 +9,6 @@ import entities.CustoTransporte;
 import java.util.Arrays;
 import java.util.List;
 import static java.util.Optional.empty;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import org.junit.After;
@@ -98,13 +97,12 @@ public class CustoTransporteControllerTest {
         //Test equals
         assertEquals(actual, expected);        
         assertThat(actual, is(expected));
-        assertThat(actual, equalTo(100));
         
         //Test Not
         assertThat(actual, is(not("aaaa")));
         
         //Test List Size
-        assertThat(actual.size(), is(2));
+        assertThat(actual.size(), is(1));
         
         //Test check empty list
         assertThat(actual, is(not(empty())));

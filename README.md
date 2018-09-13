@@ -7,10 +7,7 @@ Prova da Softplan realizada com Java EE.
 - CRUD
 - MVC
 - ORM
-- EJB
-- JPA
-- JSF
-- DataTables
+- DataTable
 - Validator
 
 ## Requisitos
@@ -23,9 +20,13 @@ Prova da Softplan realizada com Java EE.
 ## Tecnologias
 
 - Java
+- EJB
+- JPA
+- JSF
 - CSS
 - JS
 - BootsFaces
+- JUnit
 - MySql
 
 ## Instalação
@@ -67,8 +68,15 @@ Office is licensed under <a href="LICENSE">The MIT License (MIT)</a>.
 
 ## Screenshots
 
+### Sistema
+
 ![Screenshots](screenshots/screenshot01.png)<br><br>
 ![Screenshots](screenshots/screenshot02.png)<br><br>
 ![Screenshots](screenshots/screenshot03.png)<br><br>
 ![Screenshots](screenshots/screenshot04.png)<br><br>
 ![Screenshots](screenshots/screenshot05.png)<br><br>
+
+### Testes Unitários
+
+![Screenshots](screenshots/screenshot06.png)<br><br>
+![Screenshots](screenshots/screenshot07.png)<br><br>

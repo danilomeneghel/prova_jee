@@ -47,6 +47,7 @@ public class CustoTransporte implements Serializable {
     private Integer distanciaRodPav;
     @Column(name = "distancia_rod_nao_pav")
     private Integer distanciaRodNaoPav;
+    @NotNull
     @Column(name = "veiculo")
     private Integer veiculo;
     @Column(name = "carga")
