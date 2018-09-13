@@ -57,6 +57,21 @@ public class CustoTransporte implements Serializable {
     public CustoTransporte() {
     }
 
+    public CustoTransporte(int distanciaRodPav, int distanciaRodNaoPav, Double custo) {
+        this.distanciaRodPav = distanciaRodPav;
+        this.distanciaRodNaoPav = distanciaRodNaoPav;
+        this.custo = custo;
+    }
+    
+    public CustoTransporte(int id, int distanciaRodPav, int distanciaRodNaoPav, int veiculo, int carga, Double custo) {
+        this.id = id;
+        this.distanciaRodPav = distanciaRodPav;
+        this.distanciaRodNaoPav = distanciaRodNaoPav;
+        this.veiculo = veiculo;
+        this.carga = carga;
+        this.custo = custo;
+    }
+    
     public Integer getId() {
         return id;
     }

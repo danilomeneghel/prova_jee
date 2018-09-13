@@ -6,7 +6,14 @@
 package controller;
 
 import entities.Veiculo;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import static java.util.Optional.empty;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,9 +23,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author danil
+ * @author Danilo
  */
 public class VeiculoControllerTest {
+    
+    private VeiculoController v;
     
     public VeiculoControllerTest() {
     }
@@ -33,6 +42,7 @@ public class VeiculoControllerTest {
     
     @Before
     public void setUp() {
+        v = new VeiculoController();
     }
     
     @After
@@ -44,13 +54,7 @@ public class VeiculoControllerTest {
      */
     @Test
     public void testGetV() {
-        System.out.println("getV");
-        VeiculoController instance = new VeiculoController();
-        Veiculo expResult = null;
-        Veiculo result = instance.getV();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -58,12 +62,7 @@ public class VeiculoControllerTest {
      */
     @Test
     public void testSetV() {
-        System.out.println("setV");
-        Veiculo v = null;
-        VeiculoController instance = new VeiculoController();
-        instance.setV(v);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -71,13 +70,25 @@ public class VeiculoControllerTest {
      */
     @Test
     public void testGetListaVeiculos() {
-        System.out.println("getListaVeiculos");
-        VeiculoController instance = new VeiculoController();
-        List<Veiculo> expResult = null;
-        List<Veiculo> result = instance.getListaVeiculos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Rodando Teste Lista getListaVeiculos");
+                
+        List<Veiculo> actual = new ArrayList<>();
+        actual.add(new Veiculo(1, "Caminhão baú"));
+        actual.add(new Veiculo(2, "Caminhão caçamba"));
+        
+        List<Veiculo> expected = new ArrayList<>();
+        expected.add(new Veiculo(1, "Caminhão baú"));
+        expected.add(new Veiculo(2, "Caminhão caçamba"));
+        
+        //Test equals
+        assertEquals(actual, expected);        
+        assertThat(actual, is(expected));
+        
+        //Test List Size
+        assertThat(actual.size(), is(3));
+        
+        //Test check empty list
+        assertThat(actual, is(not(empty())));
     }
 
     /**
@@ -85,14 +96,21 @@ public class VeiculoControllerTest {
      */
     @Test
     public void testGetVeiculo() {
-        System.out.println("getVeiculo");
-        int id = 0;
-        VeiculoController instance = new VeiculoController();
-        String expResult = "";
-        String result = instance.getVeiculo(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Rodando Teste getVeiculo");
+        
+        double custo = 1.0;
+        
+        int actual = 1;
+        List<Veiculo> expected = Arrays.asList(
+                new Veiculo(1, "Caminhão baú", BigDecimal.valueOf(custo))
+        );
+        
+        //Test equals
+        assertEquals(actual, expected);        
+        assertThat(actual, is(expected));
+        
+        //Test check empty list
+        assertThat(actual, is(not(empty())));
     }
 
     /**
@@ -100,13 +118,30 @@ public class VeiculoControllerTest {
      */
     @Test
     public void testFindAll() {
-        System.out.println("findAll");
-        VeiculoController instance = new VeiculoController();
-        List<Veiculo> expResult = null;
-        List<Veiculo> result = instance.findAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Rodando Teste findAll");
+        
+        double custo = 1.0;
+        
+        List<Veiculo> actual = Arrays.asList(
+                new Veiculo(1, "Caminhão baú", BigDecimal.valueOf(custo))
+        );        
+        List<Veiculo> expected = Arrays.asList(
+                new Veiculo(1, "Caminhão baú", BigDecimal.valueOf(custo))
+        );
+        
+        //Test equals
+        assertEquals(actual, expected);        
+        assertThat(actual, is(expected));
+        assertThat(actual, equalTo("Caminhão baú"));
+        
+        //Test Not
+        assertThat(actual, is(not("aaaa")));
+        
+        //Test List Size
+        assertThat(actual.size(), is(2));
+        
+        //Test check empty list
+        assertThat(actual, is(not(empty())));
     }
 
     /**
@@ -114,13 +149,7 @@ public class VeiculoControllerTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("add");
-        VeiculoController instance = new VeiculoController();
-        String expResult = "";
-        String result = instance.add();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -128,11 +157,7 @@ public class VeiculoControllerTest {
      */
     @Test
     public void testClearBean() {
-        System.out.println("clearBean");
-        VeiculoController instance = new VeiculoController();
-        instance.clearBean();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -140,12 +165,7 @@ public class VeiculoControllerTest {
      */
     @Test
     public void testDelete() {
-        System.out.println("delete");
-        Veiculo v = null;
-        VeiculoController instance = new VeiculoController();
-        instance.delete(v);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }

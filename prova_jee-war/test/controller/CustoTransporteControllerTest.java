@@ -6,8 +6,12 @@
 package controller;
 
 import entities.CustoTransporte;
-import entities.Veiculo;
+import java.util.Arrays;
 import java.util.List;
+import static java.util.Optional.empty;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,9 +21,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author danil
+ * @author Danilo
  */
 public class CustoTransporteControllerTest {
+    
+    private CustoTransporteController c;
     
     public CustoTransporteControllerTest() {
     }
@@ -34,6 +40,7 @@ public class CustoTransporteControllerTest {
     
     @Before
     public void setUp() {
+        c = new CustoTransporteController();
     }
     
     @After
@@ -45,13 +52,7 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testGetC() {
-        System.out.println("getC");
-        CustoTransporteController instance = new CustoTransporteController();
-        CustoTransporte expResult = null;
-        CustoTransporte result = instance.getC();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -59,12 +60,7 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testSetC() {
-        System.out.println("setC");
-        CustoTransporte c = null;
-        CustoTransporteController instance = new CustoTransporteController();
-        instance.setC(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -72,13 +68,7 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testGetV() {
-        System.out.println("getV");
-        CustoTransporteController instance = new CustoTransporteController();
-        Veiculo expResult = null;
-        Veiculo result = instance.getV();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -86,12 +76,7 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testSetV() {
-        System.out.println("setV");
-        Veiculo v = null;
-        CustoTransporteController instance = new CustoTransporteController();
-        instance.setV(v);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -99,13 +84,30 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testFindAll() {
-        System.out.println("findAll");
-        CustoTransporteController instance = new CustoTransporteController();
-        List<CustoTransporte> expResult = null;
-        List<CustoTransporte> result = instance.findAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Rodando Teste findAll");
+        
+        Double custo = 62.70;
+        
+        List<CustoTransporte> actual = Arrays.asList(
+                new CustoTransporte(1, 100, 0, 2, 8, custo)
+        );        
+        List<CustoTransporte> expected = Arrays.asList(
+                new CustoTransporte(1, 100, 0, 2, 8, custo)
+        );
+        
+        //Test equals
+        assertEquals(actual, expected);        
+        assertThat(actual, is(expected));
+        assertThat(actual, equalTo(100));
+        
+        //Test Not
+        assertThat(actual, is(not("aaaa")));
+        
+        //Test List Size
+        assertThat(actual.size(), is(2));
+        
+        //Test check empty list
+        assertThat(actual, is(not(empty())));
     }
 
     /**
@@ -113,13 +115,7 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("add");
-        CustoTransporteController instance = new CustoTransporteController();
-        String expResult = "";
-        String result = instance.add();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -127,16 +123,16 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testCustoDistancia() {
-        System.out.println("custoDistancia");
-        int distanciaRodPav = 0;
-        int distanciaRodNaoPav = 0;
-        double subCusto = 0.0;
-        CustoTransporteController instance = new CustoTransporteController();
-        double expResult = 0.0;
-        double result = instance.custoDistancia(distanciaRodPav, distanciaRodNaoPav, subCusto);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Rodando Teste Custo Distancia");
+                
+        //Test equals
+        assertEquals(54, c.custoDistancia(100, 0));
+        assertEquals(55.60, c.custoDistancia(80, 20));
+        
+        assertThat(55.60, is(c.custoDistancia(80, 20)));
+        
+        //Test check empty list
+        assertThat(54, is(not(empty())));
     }
 
     /**
@@ -144,15 +140,17 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testCustoVeiculo() {
-        System.out.println("custoVeiculo");
-        int veiculo = 0;
-        double subCusto = 0.0;
-        CustoTransporteController instance = new CustoTransporteController();
-        double expResult = 0.0;
-        double result = instance.custoVeiculo(veiculo, subCusto);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Rodando Teste Custo Veiculo");
+        
+        double subCusto = 54;
+        
+        //Test equals
+        assertEquals(56.70, c.custoVeiculo(2, subCusto));
+        
+        assertThat(56.70, is(c.custoVeiculo(2, subCusto)));
+        
+        //Test check empty list
+        assertThat(56.70, is(not(empty())));
     }
 
     /**
@@ -160,16 +158,17 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testCustoCarga() {
-        System.out.println("custoCarga");
-        int carga = 0;
-        int distanciaTotal = 0;
-        double subCusto = 0.0;
-        CustoTransporteController instance = new CustoTransporteController();
-        double expResult = 0.0;
-        double result = instance.custoCarga(carga, distanciaTotal, subCusto);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Rodando Teste Custo Carga");
+        
+        double subCusto = 56.70;
+        
+        //Test equals
+        assertEquals(62.70, c.custoCarga(8, 100, subCusto));
+        
+        assertThat(62.70, is(c.custoCarga(8, 100, subCusto)));
+        
+        //Test check empty list
+        assertThat(62.70, is(not(empty())));
     }
 
     /**
@@ -177,11 +176,7 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testClearBean() {
-        System.out.println("clearBean");
-        CustoTransporteController instance = new CustoTransporteController();
-        instance.clearBean();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -189,12 +184,7 @@ public class CustoTransporteControllerTest {
      */
     @Test
     public void testDelete() {
-        System.out.println("delete");
-        CustoTransporte c = null;
-        CustoTransporteController instance = new CustoTransporteController();
-        instance.delete(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }

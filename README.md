@@ -59,7 +59,7 @@ Vá para "Recursos/JDBC/JDBC Connection Pools", crie a conexão com o banco de d
 Depois, vá para "Recursos/JDBC/JDBC Resources", crie um nome para "jndi" (ProvaJEE) e selecione a Pool criada anteriormente. <br>
 
 Ao concluir a configuração, basta abrir o NetBeans e executar o projeto no navegador. <br>
-http://localhost:8080/war/
+http://localhost:8080/prova_jee-war/
 
 ## Licença
 

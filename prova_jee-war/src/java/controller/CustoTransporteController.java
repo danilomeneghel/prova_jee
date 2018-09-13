@@ -27,6 +27,7 @@ public class CustoTransporteController {
     @EJB
     private VeiculoFacade veiculoFacade;
     private Veiculo v = new Veiculo();
+    private double subCusto = 0;
     
     public CustoTransporte getC() {
         return c;
@@ -52,10 +53,9 @@ public class CustoTransporteController {
     }
     
     public String add(){
-        double subCusto = 0;
         int distanciaTotal = this.c.getDistanciaRodPav() + this.c.getDistanciaRodNaoPav();
         
-        subCusto = this.custoDistancia(this.c.getDistanciaRodPav(), this.c.getDistanciaRodNaoPav(), subCusto);
+        subCusto = this.custoDistancia(this.c.getDistanciaRodPav(), this.c.getDistanciaRodNaoPav());
         
         subCusto = this.custoVeiculo(this.c.getVeiculo(), subCusto);
         
@@ -77,9 +77,9 @@ public class CustoTransporteController {
         return "/index.xhtml?faces-redirect=true";
     }
     
-    public double custoDistancia(int distanciaRodPav, int distanciaRodNaoPav, double subCusto) {
+    public double custoDistancia(int distanciaRodPav, int distanciaRodNaoPav) {
         if(distanciaRodPav > 0) {
-            subCusto = (distanciaRodPav * 0.54) + subCusto;
+            subCusto = (distanciaRodPav * 0.54);
         }
         if(distanciaRodNaoPav > 0) {
             subCusto = (distanciaRodNaoPav * 0.62) + subCusto;

@@ -1,1 +1,9 @@
+/nbproject/private/
+/prova_jee-war/nbproject/private/
+/prova_jee-ejb/nbproject/private/
 /dist/
+/build/
+/prova_jee-ejb/build/
+/prova_jee-war/build/
+/prova_jee-ejb/dist/
+/prova_jee-war/dist/
