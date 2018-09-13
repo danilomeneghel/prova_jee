@@ -53,7 +53,7 @@ public class CustoTransporteController {
     }
     
     public String add(){
-        double custoTransporte = this.custoTransporte(this.c.getDistanciaRodPav(), this.c.getDistanciaRodNaoPav(), this.c.getVeiculo(), this.c.getCarga());
+        Double custoTransporte = this.custoTransporte(this.c.getDistanciaRodPav(), this.c.getDistanciaRodNaoPav(), this.c.getVeiculo(), this.c.getCarga());
         
         String total = String.format("%.2f", custoTransporte);
         this.c.custo = Double.parseDouble(total.replace(",","."));
