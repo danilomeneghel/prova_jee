@@ -108,6 +108,8 @@ public class VeiculoControllerTest {
         assertEquals(expected, v.getVeiculo(actual));        
         assertThat(expected, is(v.getVeiculo(actual)));
         
+        //Test check empty list
+        assertThat(actual, is(not(empty())));
     }
 
     /**

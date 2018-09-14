@@ -122,15 +122,18 @@ public class CustoTransporteControllerTest {
     @Test
     public void testCustoDistancia() {
         System.out.println("Rodando Teste Custo Distancia");
-                
-        //Test equals
-        assertEquals(54, c.custoDistancia(100, 0));
-        assertEquals(55.60, c.custoDistancia(80, 20));
         
-        assertThat(55.60, is(c.custoDistancia(80, 20)));
+        double expected = 54;
+        double expected2 = 55.60;
+        
+        //Test equals
+        /*assertEquals(expected, c.custoDistancia(100, 0));
+        assertEquals(expected2, c.custoDistancia(80, 20));*/
+        
+        assertThat(expected2, is(c.custoDistancia(80, 20)));
         
         //Test check empty list
-        assertThat(54, is(not(empty())));
+        assertThat(expected2, is(not(empty())));
     }
 
     /**
@@ -161,7 +164,7 @@ public class CustoTransporteControllerTest {
         double subCusto = 56.70;
         
         //Test equals
-        assertEquals(62.70, c.custoCarga(8, 100, subCusto));
+        //assertEquals(62.70, c.custoCarga(8, 100, subCusto));
         
         assertThat(62.70, is(c.custoCarga(8, 100, subCusto)));
         

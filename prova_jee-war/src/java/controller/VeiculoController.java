@@ -23,7 +23,7 @@ public class VeiculoController {
     @EJB
     private VeiculoFacade veiculoFacade;
     private Veiculo v = new Veiculo();
-    private Integer id = 0;
+    private final Integer id = 0;
     
     public Veiculo getV() {
         return v;

@@ -1,34 +1,41 @@
 package exercicio2;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 public class GeradorObservacao {
 
-    //Textos pre-definidos
-    static final String umoNota = "Fatura da nota fiscal de simples remessa: ";
     //Identificador da entidade
-    String texto;
-
-    //Gera observa��es, com texto pre-definido, incluindo os n�meros, das notas fiscais, recebidos no par�metro
-    public String geraObservacao(List lista) {
-        texto = "";
-        if (!lista.isEmpty()) {
-            return retornaCodigos(lista) + ".";
-        }
-        return "";
+    private String texto = "";
+    private String codigos = "";
+    
+    public static void main (String [] args) {
+        //Teste
+        GeradorObservacao g = new GeradorObservacao();
+        String obs = g.geraObservacao(Arrays.asList(1, 2, 3, 4, 5));
+        //Imprimir dados no console
+        System.out.println(obs);
     }
+    
+    //Gera a observação com os números das notas fiscais, recebidos no parametro
+    public String geraObservacao(List lista) {
+        //Cria os textos pré-definidos
+        if (!lista.isEmpty()) {
+            if (lista.size() >= 2) 
+                texto = "Fatura das notas fiscais de simples remessa: ";
+            else
+                texto = "Fatura da nota fiscal de simples remessa: ";
 
-    //Cria observa��o
-    private String retornaCodigos(List lista) {
-        if (lista.size() >= 2) {
-            texto = "Fatura das notas fiscais de simples remessa: ";
-        } else {
-            texto = umoNota;
+            codigos = retornaCodigos(lista) + ".";
         }
-
-        //Acha separador
+        
+        return texto + codigos;
+    }
+    
+    private StringBuilder retornaCodigos(List lista) {
         StringBuilder cod = new StringBuilder();
+        //Adiciona os separadores
         for (Iterator<Integer> iterator = lista.iterator(); iterator.hasNext();) {
             Integer c = iterator.next();
             String s = "";
@@ -39,10 +46,9 @@ public class GeradorObservacao {
             } else {
                 s = " e ";
             }
-
             cod.append(s + c);
         }
-
-        return texto + cod;
+        
+        return cod;
     }
 }
