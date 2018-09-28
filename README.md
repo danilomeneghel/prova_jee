@@ -64,7 +64,7 @@ http://localhost:8080/prova_jee-war/
 
 ## Licença
 
-Office is licensed under <a href="LICENSE">The MIT License (MIT)</a>.
+Custo de Transporte está licenciado sob <a href="LICENSE">The MIT License (MIT)</a>.
 
 ## Screenshots
 
