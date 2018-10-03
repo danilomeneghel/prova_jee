@@ -64,7 +64,7 @@ http://localhost:8080/prova_jee-war/
 
 ## Licença
 
-Custo de Transporte está licenciado sob <a href="LICENSE">The MIT License (MIT)</a>.
+Este projeto está licenciado sob <a href="LICENSE">The MIT License (MIT)</a>.
 
 ## Screenshots
 
